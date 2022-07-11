@@ -15,7 +15,7 @@ public class CSVReader {
 //    return value > listOfContents (list of lists containing baseURL and page Title)
     public List<ArrayList<String>> setContentPages() {
 //        declare string variable for file path
-        String file = "/Users/jjun/Documents/csv_files/US Content Pages - LegalNotice.csv";
+        String file = "/Users/jjun/Documents/csv_files/US Content Pages - Entity.csv";
 //        declare string variable line, with value to be assigned in try block
         String line = "";
 
