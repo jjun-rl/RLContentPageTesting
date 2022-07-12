@@ -3,6 +3,7 @@ package parsingCSV;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.time.Duration;
 import java.util.*;
 
 public class seleniumCSV {
@@ -21,7 +22,7 @@ public class seleniumCSV {
         String chromeDriver = "/Users/jjun/Documents/IDEAprojects/chromedriver";
         System.setProperty("webdriver.chrome.driver", chromeDriver);
         WebDriver driver = new ChromeDriver();
-
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 //        Traversing elements using next() method
         while (pagesIterator.hasNext()) {
@@ -29,10 +30,12 @@ public class seleniumCSV {
 
             System.out.println("line: " + page);
             String baseURL = page.get(0);
-//                System.out.println("baseURL: " + baseURL);
+            System.out.println("baseURL: " + baseURL);
 
             driver.get(baseURL);
-            String expectedURL = driver.getCurrentUrl();
+//            String expectedURL = driver.getCurrentUrl();
+//            System.out.println(expectedURL);
+//            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
             String actualTitle = page.get(1);
             System.out.println("actualTitle: " + actualTitle);

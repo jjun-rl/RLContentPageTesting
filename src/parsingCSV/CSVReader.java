@@ -15,7 +15,7 @@ public class CSVReader {
 //    return value > listOfContents (list of lists containing baseURL and page Title)
     public List<ArrayList<String>> setContentPages() {
 //        declare string variable for file path
-        String file = "/Users/jjun/Documents/csv_files/US Content Pages - Affiliate.csv";
+        String file = "/Users/jjun/Documents/csv_files/US Content Pages - ParentCategory.csv";
 //        declare string variable line, with value to be assigned in try block
         String line = "";
 
@@ -34,12 +34,17 @@ public class CSVReader {
 
 //                declare String list "values", will be given the values of each item in a line which has been split by ",'
                 String [] values = line.split(",");
+
+//                need to strip white space from csv file
+                if(values.length != 0) {
+                    System.out.println(values[0]);
 //                append only necessary items from "values", values[0] > baseURL; values[2] > page Title, to eachContent ArrayList
 //                does the following be better assigned to a variable? (7/11 2:28pm)
-                eachContent.add(values[0]);
-                eachContent.add(values[2]);
+                    eachContent.add(values[0]);
+                    eachContent.add(values[2]);
 //                append eachContent list with each iteration to listOfContents
-                listOfContents.add(eachContent);
+                    listOfContents.add(eachContent);
+                }
             }
 //            after loop breaks, return the value of ArrayList variable "listOfContents"
             return(listOfContents);
