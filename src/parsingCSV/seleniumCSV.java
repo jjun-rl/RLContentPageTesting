@@ -3,12 +3,10 @@ package parsingCSV;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class seleniumCSV {
+
 //    main driver method
     public static void main(String[] args) {
 //        declare new object variable from CSVReader class to access listOfContents
@@ -24,47 +22,35 @@ public class seleniumCSV {
         System.setProperty("webdriver.chrome.driver", chromeDriver);
         WebDriver driver = new ChromeDriver();
 
+
 //        Traversing elements using next() method
         while (pagesIterator.hasNext()) {
-//            System.out.println("While Loop > page line: " + pagesIterator.next());
+            ArrayList<String> page = pagesIterator.next();
 
-//        for-each loop creates Internal Iterator
-            for (ArrayList<String> page : pages) {
-                System.out.println("line: " + page);
-                String baseURL = page.get(0);
+            System.out.println("line: " + page);
+            String baseURL = page.get(0);
 //                System.out.println("baseURL: " + baseURL);
 
-                driver.get(baseURL);
-                String expectedURL = driver.getCurrentUrl();
+            driver.get(baseURL);
+            String expectedURL = driver.getCurrentUrl();
 
-//                if (expectedURL != baseURL) {
-//                    System.out.println("FALSE: URL match");
-//                    System.out.println("getCurrentURL: " + expectedURL);
-//                }
-//                else
-//                    System.out.println("TRUE: URL match");
+            String actualTitle = page.get(1);
+            System.out.println("actualTitle: " + actualTitle);
 
-                String actualTitle = page.get(1);
-                System.out.println("actualTitle: " + actualTitle);
+            String expectedTitle = driver.getTitle();
+            System.out.println("expectedTitle: " + expectedTitle);
 
-                String expectedTitle = driver.getTitle();
-                System.out.println("expectedTitle: " + expectedTitle);
-
-                if (expectedTitle.contains(actualTitle)) {
-                    System.out.println("PASS: title DOES match" );
-                    System.out.println("");
-                }
-                else {
-                    System.out.println("ERROR: title DOES NOT match");
-                    System.out.println("");
-                }
+            if (expectedTitle.contains(actualTitle)) {
+                System.out.println("PASS: title DOES match" );
+                System.out.println("");
             }
-//            driver.quit();
+            else {
+                System.out.println("ERROR: title DOES NOT match");
+                System.out.println("");
+            }
         }
         driver.quit();
-
     }
-
 }
 
 
