@@ -14,7 +14,9 @@ public class seleniumCSV {
         CSVReader content = new CSVReader();
 
 //        instantiate new ArrayList with return value of CSVReader class
-        List<ArrayList<String>> pages = content.setContentPages();
+        List<ArrayList<String>> pages = CSVReader.getContents("/Users/jjun/Documents/csv_files/US Content Pages - ParentCategory.csv");
+//        content.setContentPages("");
+
 
 //        Getting ListIterator
         ListIterator<ArrayList<String>> pagesIterator = pages.listIterator();
