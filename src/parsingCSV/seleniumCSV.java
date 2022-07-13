@@ -3,8 +3,10 @@ package parsingCSV;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
 import java.time.Duration;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class seleniumCSV {
 
@@ -14,7 +16,7 @@ public class seleniumCSV {
         CSVReader content = new CSVReader();
 
 //        instantiate new ArrayList with return value of CSVReader class
-        List<ArrayList<String>> pages = CSVReader.getContents("/Users/jjun/Documents/csv_files/US Content Pages - ParentCategory.csv");
+        List<ArrayList<String>> pages = CSVReader.getContents("/Users/jjun/Documents/csv_files/US Content Pages - DocumentPage.csv");
 //        content.setContentPages("");
 
 
@@ -24,7 +26,7 @@ public class seleniumCSV {
         String chromeDriver = "/Users/jjun/Documents/IDEAprojects/chromedriver";
         System.setProperty("webdriver.chrome.driver", chromeDriver);
         WebDriver driver = new ChromeDriver();
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+//        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 //        Traversing elements using next() method
         while (pagesIterator.hasNext()) {
@@ -32,12 +34,12 @@ public class seleniumCSV {
 
             System.out.println("line: " + page);
             String baseURL = page.get(0);
-            System.out.println("baseURL: " + baseURL);
+//            System.out.println("baseURL: " + baseURL);
 
             driver.get(baseURL);
 //            String expectedURL = driver.getCurrentUrl();
 //            System.out.println(expectedURL);
-//            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+//            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
             String actualTitle = page.get(1);
             System.out.println("actualTitle: " + actualTitle);
