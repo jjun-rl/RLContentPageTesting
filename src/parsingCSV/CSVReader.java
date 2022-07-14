@@ -38,7 +38,7 @@ public class CSVReader {
 
 //                if conditional to account for empty lines within CSV file (e.g, ",,")
                 if (values.length != 0) {
-//                    System.out.println(values[0]);
+//                    System.out.println("values[0]" + values[0]);
 //                    add base URL and page Title to contentLine ArrayList object
                     contentLine.add(values[0]);
                     contentLine.add(values[2]);
@@ -46,6 +46,7 @@ public class CSVReader {
                     listOfContents.add(contentLine);
                 }
             }
+//            System.out.println("listOfContents: " + listOfContents); --> to check that there aren't anomalies in list that could case problems with seleniumCSV
             return (listOfContents);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -1,7 +1,12 @@
 package parsingCSV;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 import java.time.Duration;
@@ -16,16 +21,20 @@ public class seleniumCSV {
         CSVReader content = new CSVReader();
 
 //        instantiate new ArrayList with return value of CSVReader class
-        List<ArrayList<String>> pages = CSVReader.getContents("/Users/jjun/Documents/csv_files/US Content Pages - DocumentPage.csv");
+        List<ArrayList<String>> pages = CSVReader.getContents("/Users/jjun/Documents/csv_files/US Content Pages - Affiliate.csv");
 //        content.setContentPages("");
 
 
 //        Getting ListIterator
         ListIterator<ArrayList<String>> pagesIterator = pages.listIterator();
 
-        String chromeDriver = "/Users/jjun/Documents/IDEAprojects/chromedriver";
+        String chromeDriver = "/Users/jjun/Downloads/chromedriver";
+//        System.setProperty("webdriver.chrome.driver", chromeDriver);
+        ChromeOptions optionsBeta = new ChromeOptions();
+        optionsBeta.setBinary("/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome Beta");
         System.setProperty("webdriver.chrome.driver", chromeDriver);
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver(optionsBeta);
+
 //        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 //        Traversing elements using next() method
@@ -37,6 +46,7 @@ public class seleniumCSV {
 //            System.out.println("baseURL: " + baseURL);
 
             driver.get(baseURL);
+
 //            String expectedURL = driver.getCurrentUrl();
 //            System.out.println(expectedURL);
 //            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
